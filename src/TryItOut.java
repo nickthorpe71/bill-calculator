@@ -15,5 +15,12 @@ public class TryItOut {
         cupsOfCoffeeFriday = 4;
 
         System.out.println(cupsOfCoffeeFriday);
+
+        boolean passed = true;
+        boolean hasError = false;
+        boolean isHungry = true;
+        boolean hasAccess = false;
+
+        System.out.println(passed);
     }
 }
