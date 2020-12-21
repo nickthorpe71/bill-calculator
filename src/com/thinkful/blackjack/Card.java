@@ -2,19 +2,19 @@ package com.thinkful.blackjack;
 
 public class Card {
     private Suit suit;
-    private String cardFace;
+    private Face cardFace;
     private int value;
     private boolean turnedUp;
 
     public Card() {
-        this("Ace", Suit.SPADES, 1, false);
+        this(Face.ACE, Suit.SPADES, 1, false);
     }
 
-    public Card(String cardFace, Suit suit){
+    public Card(Face cardFace, Suit suit){
         this(cardFace, suit, 1, false);
     }
 
-    public Card(String cardFace, Suit suit, int value, boolean turnedUp){
+    public Card(Face cardFace, Suit suit, int value, boolean turnedUp){
         this.setSuit(suit);
         this.setCardFace(cardFace);
         this.setValue(value);
@@ -23,8 +23,8 @@ public class Card {
 
     @Override
     public String toString() {
-        return String.format("Card: %s of %s (Value: %d, Turned Up: %b)",
-                this.getCardFace(), this.getSuit(), this.getValue(), this.isTurnedUp());
+        return String.format("%s%s%s",
+                this.getCardFace(), this.getSuit(), this.isTurnedUp()?"\u2191":"\u2193");
     }
 
     public Suit getSuit() {
@@ -35,11 +35,11 @@ public class Card {
         this.suit = suit;
     }
 
-    public String getCardFace() {
+    public Face getCardFace() {
         return cardFace;
     }
 
-    public void setCardFace(String cardFace) {
+    public void setCardFace(Face cardFace) {
         this.cardFace = cardFace;
     }
 
