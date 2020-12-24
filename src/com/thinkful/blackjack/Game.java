@@ -22,6 +22,15 @@ public class Game {
         return String.format("Player: %s, Dealer: %s", getPlayer(), getDealer());
     }
 
+    public void dealerMove() {
+        while(getDealer().getValue() < 16 && getDealer().getStatus() == HandStatus.OPEN) {
+            getDealer().addCard(getDeck().deal());
+        }
+        if(getDealer().getStatus() == HandStatus.OPEN) {
+            getDealer().setStatus(HandStatus.STAND);
+        }
+    }
+
     public void playerMove(Action action) {
         if(action == Action.HIT) {
             getPlayer().addCard(getDeck().deal());
