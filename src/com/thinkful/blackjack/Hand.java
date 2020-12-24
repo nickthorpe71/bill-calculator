@@ -25,4 +25,20 @@ public class Hand {
         }
         return total;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append("[");
+        for (Card card: this.getCards())
+            stringBuilder.append(String.format("%s", card));
+
+        if (this.getCards().size() > 0)
+            stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+
+        stringBuilder.append("]");
+
+        return String.format("Value=%d, %s", this.getValue(), stringBuilder.toString());
+    }
 }
