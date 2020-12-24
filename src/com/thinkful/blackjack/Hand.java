@@ -5,17 +5,28 @@ import java.util.List;
 
 public class Hand {
     private List<Card> cards;
+    private HandStatus status;
 
     public Hand() {
         this.cards = new ArrayList<Card>();
+        setStatus(HandStatus.OPEN);
     }
 
     public List<Card> getCards() {
         return cards;
     }
 
+    public HandStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(HandStatus status) {
+        this.status = status;
+    }
+
     public void addCard(Card card) {
         this.getCards().add(card);
+        if(getValue() > 21) setStatus(HandStatus.BUST);
     }
 
     public int getValue() {
