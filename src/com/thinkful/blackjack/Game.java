@@ -41,6 +41,10 @@ public class Game {
         }
     }
 
+    public boolean isPlayerTurn() {
+        return getPlayer().getStatus() == HandStatus.OPEN;
+    }
+
     public Hand getPlayer() {
         return player;
     }
