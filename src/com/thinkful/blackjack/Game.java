@@ -22,6 +22,16 @@ public class Game {
         return String.format("Player: %s, Dealer: %s", getPlayer(), getDealer());
     }
 
+    public void playerMove(Action action) {
+        if(action == Action.HIT) {
+            getPlayer().addCard(getDeck().deal());
+        } else {
+            if(action == Action.STAND) {
+                getPlayer().setStatus(HandStatus.STAND);
+            }
+        }
+    }
+
     public Hand getPlayer() {
         return player;
     }
