@@ -45,6 +45,32 @@ public class Game {
         return getPlayer().getStatus() == HandStatus.OPEN;
     }
 
+    public String outcome() {
+
+        //if you both bust
+        if(getPlayer().getStatus() == HandStatus.BUST && getDealer().getStatus() == HandStatus.BUST) {
+            return "Everyone BUSTED! No winners!";
+        }
+
+        // if you bust but not dealer
+        if (getPlayer().getStatus() == HandStatus.BUST && getDealer().getStatus() == HandStatus.STAND) {
+            return "You BUST! Dealer wins!";
+        }
+
+        //if dealer bust but not you
+        if(getPlayer().getStatus() == HandStatus.STAND && getDealer().getStatus() == HandStatus.BUST) {
+            return "Dealer BUST! You Win!";
+
+        }
+
+        //neither bust
+        if(getPlayer().getValue() > getDealer().getValue()) {
+            return "You win!";
+        }
+
+        return "You lose. Dealer wins.";
+    }
+
     public Hand getPlayer() {
         return player;
     }
