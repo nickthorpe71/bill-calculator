@@ -49,4 +49,10 @@ public class Deck {
         }
     }
 
+    public Card deal() {
+        if (this.getCards().isEmpty())
+            return null;
+        return this.getCards().remove(0);
+    }
+
 }
