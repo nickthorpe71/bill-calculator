@@ -13,4 +13,8 @@ public class Hand {
     public List<Card> getCards() {
         return cards;
     }
+
+    public void addCard(Card card) {
+        this.getCards().add(card);
+    }
 }
