@@ -5,32 +5,28 @@ import java.util.List;
 
 public class TryItOut {
 
-    public static String order(String words) {
-        String result = "";
-        HashMap<Integer, String> wordsMap = new HashMap<>();
-        String[] splitWords = words.split(" ");
+    public static String whoLikesIt(String... names) {
+        if(names.length < 1)
+            return "no one likes this";
 
-        if(splitWords.length == 0 || splitWords[0] == "")
-            return "";
+        else if(names.length == 1)
+            return names[0] + " likes this";
 
-        for (int n = 0; n < splitWords.length; n++ ){
-            for(int i = 0; i < splitWords[n].length(); i++){
-                int currentCharAsInt = splitWords[n].charAt(i) - '0';
-                if(currentCharAsInt < 10)
-                    wordsMap.put(currentCharAsInt, splitWords[n]);
-            }
-        }
+        else if(names.length == 2)
+            return names[0] + " and " + names[1] + " like this";
 
-        for(int i = 1; i <= splitWords.length; i++) {
-            result += wordsMap.get(i);
-            if (i < splitWords.length)
-                result += " ";
-        }
+        else if(names.length == 3)
+            return names[0] + ", " + names[1] + " and " + names[2] + " like this";
 
-        return result;
+        else
+            return names[0] + ", " + names[1] + " and " + (names.length - 2) + " others like this";
+
     }
 
     public static void main(String[] args) {
-        System.out.println(order(""));
+        System.out.println(whoLikesIt()); // "no one likes this"
+        System.out.println(whoLikesIt("Peter")); // "Peter likes this"
+        System.out.println(whoLikesIt("Jacob", "Alex")); // "Jacob and Alex like this"
+        System.out.println(whoLikesIt("Alex", "Jacob", "Mark", "Max")); // "Alex, Jacob and 2 others like this"
     }
 }
