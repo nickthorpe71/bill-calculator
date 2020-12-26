@@ -27,6 +27,25 @@ public class Card {
                 this.getCardFace(), this.getSuit(), this.isTurnedUp()?"\u2191":"\u2193");
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        // self check
+        if (this == obj)
+            return true;
+        // null check
+        if (obj == null)
+            return false;
+        // type check and cast
+        if (getClass() != obj.getClass())
+            return false;
+
+        //cast as Card
+        Card card = (Card) obj;
+
+        // field comparison
+        return this.getCardFace() == card.getCardFace() && this.getSuit() == card.getSuit();
+    }
+
     public Suit getSuit() {
         return suit;
     }
